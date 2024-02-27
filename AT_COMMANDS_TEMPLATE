@@ -2,12 +2,16 @@
 
 AT+CSSLCFG="sslversion",1,3
 AT+SHSSL=1,""
-AT+SHCONF="URL","https://www.googleapis.com" //https://location.services.mozilla.com
+AT+SHCONF="URL","https://location.services.mozilla.com" //Mozilla.com
+//AT+SHCONF="URL","https://www.googleapis.com" //Google
 AT+SHCONF="BODYLEN",2048
 AT+SHCONF="HEADERLEN",350
 AT+SHCONN
 AT+SHCHEAD
 AT+SHAHEAD="Content-Type","application/js"
 AT+SHBOD=198,10000
+//Wait for '>'
 {"considerIp":"false","wifiAccessPoints":[{"macAddress":"MAC_ADDRESS","signalStrength":0,"signalToNoiseRatio":0},{"macAddress":"MAC_ADDRESS","signalStrength":0,"signalToNoiseRatio":0}]}
-AT+SHREQ="/geolocation/v1/geolocate?key=<API_KEY>",3 //AT+SHREQ="/geolocation/v1/geolocate?key=<API_KEY>",3 
+AT+SHREQ="/v1/geolocate?key=<API_KEY>",3 //Mozilla
+//AT+SHREQ="/geolocation/v1/geolocate?key=<API_KEY>",3 //Google
+//Wait for JSON response
